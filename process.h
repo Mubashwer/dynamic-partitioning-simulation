@@ -10,6 +10,7 @@
 
 
 #define MAX_LINE_SIZE 255
+#define MAX_SWAP        3
 
 typedef struct process
 {
