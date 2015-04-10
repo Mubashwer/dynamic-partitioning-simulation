@@ -43,7 +43,7 @@ process_t *make_pq_node(int pid, int size)
 int process_enqueue(process_t *node)
 {
     /* if process is swapped out thrice, it is no longer needed */
-    if(node->swapped >= 3)
+    if(node->swapped >= MAX_SWAP)
     {
         free(node);
         return 0;
