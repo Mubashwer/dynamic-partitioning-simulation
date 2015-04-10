@@ -1,0 +1,78 @@
+/**
+  * Name: Mubashwer Salman Khurshid
+  * Username: mskh
+  * StudentID: 601738
+  *
+  * COMP30023 Project 1 Report
+  */
+
+
+B1)
+
+Generally First-fit and Next-fit algorithms are better algorithms than 
+Best-Fit and Worst-fit algorithms in terms of time complexity because
+in the former two, there is no linear search through the free-list and
+thus the search component of the algorithms have better time complexity.
+
+External fragmentation problem still exists for all the algorithms.
+
+
+In order to compare the efficiency of memory usage, simulation expriment
+with 6 files of different combination of number of processes and maximum
+size of memory and range of process size were carried out.
+
+Test input files:
+p1000_m256.txt   : 1000 processes, 256 units of memory, random process size
+p10000_m256.txt  : 10000 processes, 256 units of memory, random process size
+p1000_m1024.txt  : 1000 processes, 1024 units of memory, random process size
+p10000_m1024.txt : 10000 processes, 1024 units of memory, random process size
+p1000_m256_f.txt : 10000 processes, 1024 units of memory, 
+                   process size ranging from 128 to 171 units
+p1000_m1024_f.txt: 10000 processes, 256 units of memory, 
+                   process size ranging from 32 to 42 units
+
+Results:
++-------------------+---------------------------------------------+
+|                   |              Average Usage (%)              |
++-------------------+---------------------------------------------+
+|        File       | First fit | Best fit | Worst fit | Next fit |
++-------------------+-----------+----------+-----------+----------+
+| p1000_m256.txt    |    69.2   |   71.5   |    64.8   |   73.1   |
++-------------------+-----------+----------+-----------+----------+
+| p10000_m256.txt   |    73.2   |   73.6   |    65.0   |   73.1   |
++-------------------+-----------+----------+-----------+----------+
+| p1000_m1024.txt   |    72.0   |   66.8   |    61.0   |   69.1   |
++-------------------+-----------+----------+-----------+----------+
+| p10000_m1024.txt  |    70.2   |   65.7   |    60.5   |   67.2   |
++-------------------+-----------+----------+-----------+----------+
+| p1000_m256_f.txt  |    84.6   |   84.6   |    88.6   |   84.6   |
++-------------------+-----------+----------+-----------+----------+
+| p1000_m1024_f.txt |    84.0   |   86.5   |    87.0   |   84.0   |
++-------------------+-----------+----------+-----------+----------+
+
+For files with processes of random size, all algorithms performed similarly
+with a range of memory usage between 61% to 74%. For files with processes with
+a small fixed size range, the rage of memory usage is similar among the
+algorithms and higher (84% to 88%). It is higher because processes with similar
+size leads to less external fragmentation. The Worst-fit algorithm performed
+slightly worse in "random" files but slightly better in "fixed range" files
+because the Worse-fit reduces the effect of external fragmentation by using 
+the largest holes. Overall the algorithms will reach an equilibrium and perform
+similarly because the proportion of holes to the segments of memory will remain
+about the same on average.
+
+B2)
+It is assumed that the probablity that a new process fits exactly into
+a hole is negligible.
+
+It is also assumed that probability that a given memory segment containing
+a process is followed by a memory hole instead of another memory segment is 50%
+This is because when equilibrium is reached the chance of creating a hole and
+removing/merging a hole is the same.
+[If evicted process is between two holes, then the two holes merge so hole
+count falls. If evicted process is between two memory segments then a hole is
+created.] 
+
+Therefore if there are Sm segments of memory containing processes, there has to
+be Sm/2 number of holes.
+
